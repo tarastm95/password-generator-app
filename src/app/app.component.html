@@ -1,0 +1,29 @@
+<div class="generator">
+  <h1>Password Generator</h1>
+
+  <div class="controls">
+    <label>
+      Length:
+      <input type="number" min="4" max="128" [(ngModel)]="length" />
+    </label>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="includeNumbers" />
+      Include numbers
+    </label>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="includeSymbols" />
+      Include symbols
+    </label>
+  </div>
+
+  <button (click)="generate()" [disabled]="loading">
+    {{ loading ? 'Generating…' : 'Generate password' }}
+  </button>
+
+  <div *ngIf="password" class="result">
+    <input type="text" readonly [value]="password" />
+    <button (click)="copy()">Copy</button>
+  </div>
+</div>

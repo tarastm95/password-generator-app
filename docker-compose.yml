@@ -1,0 +1,22 @@
+services:
+  angular:
+    build: .
+    working_dir: /app
+
+    volumes:
+      - ./:/app
+      - /app/node_modules
+
+    command: >
+      ng serve
+      --host 0.0.0.0
+      --port 4200
+      --poll 2000
+      --proxy-config proxy.conf.json
+
+    ports:
+      - "4200:4200"
+
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: "2000"
